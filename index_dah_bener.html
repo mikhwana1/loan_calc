@@ -1,0 +1,499 @@
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://img2.pngio.com/accountant-accounting-calculate-calculation-calculator-math-accounting-calculator-png-512_512.png" type="image/gif" sizes="16x16">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" >
+    <title>Rule of 78 Calculator</title>
+</head>
+<body class="bg-primary">
+    <div class="contianer">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card card-body text-center mt-5">
+                    <h1 class="heading display-5 pb-3"> Loan Calculator</h1>
+                    <form id="loan-form">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-text">Rp</span>
+                                <input type="number" class="form-control" id="amount" placeholder="PRINCIPAL" onchange="Calculate()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-text">%</span>
+                                <input type="number" class="form-control" id="rate" placeholder="rate" onchange="Calculate()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" id="months" placeholder="TERM" onchange="Calculate()" oninput="maxLengthCheck(this)" min="0" max="60">
+                        </div>
+                        
+
+                        <h2 id="total"></h2>
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th scope="col" class="text-center">TERM</th>
+                                  <th scope="col" class="text-center">PRINCIPAL</th>
+                                  <th scope="col" class="text-center">INTEREST</th>
+                                  <th scope="col" class="text-center">MONHTLY INSTALLMENT</th>
+                                  <th scope="col" class="text-center">OPENING PRINC</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th class="text-center">1</th>
+                              <td id="princ1" class="text-center"></td>
+                              <td id="inter1" class="text-center"></td>
+                              <td id="moni1" onchange="Calculate()" class="text-center"></td>
+                              <td id="open1" class="text-center"></td>
+                          </tr>
+                          <tr>
+                              <th class="text-center">2</th>
+                              <td id="princ2" class="text-center"></td>
+                              <td id="inter2" class="text-center"></td>
+                              <td id="moni2" onchange="Calculate()" class="text-center"></td>
+                              <td id="open2" class="text-center"></td>
+
+                          </tr>
+                          <tr>
+                              <th class="text-center">3</th>
+                              <td id="princ3" class="text-center"></td>
+                              <td id="inter3" class="text-center"></td>
+                              <td id="moni3" onchange="Calculate()" class="text-center"></td>
+                              <td id="open3" class="text-center"></td>
+                          </tr>
+
+                          <tr>
+                              <th class="text-center">4</th>
+                              <td id="princ4" class="text-center"></td>
+                              <td id="inter4" class="text-center"></td>
+                              <td id="moni4" onchange="Calculate()" class="text-center"></td>
+                              <td id="open4" class="text-center"></td>
+                          </tr>
+
+                          <tr>
+                              <th class="text-center">5</th>
+                              <td id="princ5" class="text-center"></td>
+                              <td id="inter5" class="text-center"></td>
+                              <td id="moni5" onchange="Calculate()" class="text-center"></td>
+                              <td id="open5" class="text-center"></td>
+                          </tr>
+
+                          <tr>
+                            <th class="text-center">6</th>
+                            <td id="princ6" class="text-center"></td>
+                            <td id="inter6" class="text-center"></td>
+                            <td id="moni6" onchange="Calculate()" class="text-center"></td>
+                            <td id="open6" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">7</th>
+                            <td id="princ7" class="text-center"></td>
+                            <td id="inter7" class="text-center"></td>
+                            <td id="moni7" onchange="Calculate()" class="text-center"></td>
+                            <td id="open7" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">8</th>
+                            <td id="princ8" class="text-center"></td>
+                            <td id="inter8" class="text-center"></td>
+                            <td id="moni8" onchange="Calculate()" class="text-center"></td>
+                            <td id="open8" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">9</th>
+                            <td id="princ9" class="text-center"></td>
+                            <td id="inter9" class="text-center"></td>
+                            <td id="moni9" onchange="Calculate()" class="text-center"></td>
+                            <td id="open9" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">10</th>
+                            <td id="princ10" class="text-center"></td>
+                            <td id="inter10" class="text-center"></td>
+                            <td id="moni10" onchange="Calculate()" class="text-center"></td>
+                            <td id="open10" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">11</th>
+                            <td id="princ11" class="text-center"></td>
+                            <td id="inter11" class="text-center"></td>
+                            <td id="moni11" onchange="Calculate()" class="text-center"></td>
+                            <td id="open11" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">12</th>
+                            <td id="princ12" class="text-center"></td>
+                            <td id="inter12" class="text-center"></td>
+                            <td id="moni12" onchange="Calculate()" class="text-center"></td>
+                            <td id="open12" class="text-center"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        </form>
+
+    </div>
+</div>
+</div>    
+</div>  
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<style type="">
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Ubuntu:wght@500&display=swap');
+
+    body,html{
+        margin: 0px;
+        padding: 0px;
+        overflow: auto;
+        font-family: 'Ubuntu', sans-serif;
+        background-image: url("background_image.jpeg");
+        background-repeat: repeat;
+        background-size: cover;
+        height: 100%;
+    }
+
+/* Heading */
+.heading{
+    font-family: 'Pacifico', cursive;
+}
+
+
+#loading img{
+    width: 35%;
+    height: 35%;
+}
+
+#loading, #results{
+    display: none;
+}
+</style>
+
+<script>
+
+  function maxLengthCheck(object) {
+    if (object.value.length > object.max.length)
+      object.value = object.value.slice(0, object.max.length)
+}
+
+function Calculate() {
+
+    // Extracting value in the amount 
+    // section in the variable
+    const amount = document.querySelector("#amount").value;
+    
+    // Extracting value in the interest
+    // rate section in the variable
+    const rate = document.querySelector("#rate").value;
+    
+    // Extracting value in the months 
+    // section in the variable
+    const months = document.querySelector("#months").value;
+    
+
+
+
+
+// Calculateinterestapr
+
+const apr = ((rate) * 12 / 100);
+
+
+    // calculate amt percent yg p
+
+    const  amt = (amount * apr * (months / 12));
+
+// calculate loan amount
+
+const loa = ((amount * amt) / amt + amt);
+
+
+const dipp = ((months * months) / months + 1);
+
+const dip = ((months * dipp) / 2);
+
+
+
+    // Calculating interest per month
+    // const interest = (amount * apr * (months / 12))
+    
+    // Calculating total payment
+    // const total = ((amount / months) + interest).toFixed(2);
+
+ // calculate total 
+ // const total  = ((loa) / months).toFixed(2);    
+ // document.querySelector("#total")
+ // .innerHTML = "Total. Rp" + total;
+
+
+ const total  = (loa / months).toFixed(2);    
+ document.querySelector("#total")
+ .innerHTML = "Total. Rp" + total;
+
+// start1
+
+
+
+const moni1  = (loa / months).toFixed(2);    
+document.querySelector("#moni1")
+.innerHTML =  moni1;
+
+const open1  = amount;    
+document.querySelector("#open1")
+.innerHTML =  open1;
+
+const inter1  = ((months / dip) * amt).toFixed(2);    
+document.querySelector("#inter1")
+.innerHTML =  inter1;
+
+const princ1  = moni1 - inter1;    
+document.querySelector("#princ1")
+.innerHTML =  princ1;
+
+
+// start2
+
+const moni2  = moni1;    
+document.querySelector("#moni2")
+.innerHTML =  moni2;
+
+const open2  = amount - princ1;    
+document.querySelector("#open2")
+.innerHTML =  open2;
+
+const inter2  = (((months -1) / dip) * amt).toFixed(2);    
+document.querySelector("#inter2")
+.innerHTML =  inter2;
+
+const princ2  = moni2 - inter2;    
+document.querySelector("#princ2")
+.innerHTML =  princ2;
+
+
+ // start3
+
+ const moni3  = moni2;    
+ document.querySelector("#moni3")
+ .innerHTML =  moni3;
+
+ const open3  = open2 - princ2;    
+ document.querySelector("#open3")
+ .innerHTML =  open3;
+
+ const inter3  = (((months - 2) / dip) * amt).toFixed(2);    
+ document.querySelector("#inter3")
+ .innerHTML =  inter3;
+
+ const princ3  = moni3 - inter3;    
+ document.querySelector("#princ3")
+ .innerHTML =  princ3;
+
+
+  // start4
+
+  const moni4  = moni3;    
+  document.querySelector("#moni4")
+  .innerHTML =  moni4;
+
+  const open4  = (open3 - princ3).toFixed(2);    
+  document.querySelector("#open4")
+  .innerHTML =  open4;
+
+  const inter4  = (((months - 3) / dip) * amt).toFixed(2);    
+  document.querySelector("#inter4")
+  .innerHTML =  inter4;
+
+  const princ4  = moni4 - inter4;    
+  document.querySelector("#princ4")
+  .innerHTML =  princ4;
+
+
+    // start5
+
+    const moni5  = moni4;    
+    document.querySelector("#moni5")
+    .innerHTML =  moni5;
+
+    const open5  = (open4 - princ4).toFixed(2);    
+    document.querySelector("#open5")
+    .innerHTML =  open5;
+
+    const inter5  = (((months - 4) / dip) * amt).toFixed(2);    
+    document.querySelector("#inter5")
+    .innerHTML =  inter5;
+
+    const princ5  = moni5 - inter5;    
+    document.querySelector("#princ5")
+    .innerHTML =  princ5;
+
+
+    // start6
+
+    const moni6  = moni5;    
+    document.querySelector("#moni6")
+    .innerHTML =  moni5;
+
+    const open6  = (open5 - princ5).toFixed(2);    
+    document.querySelector("#open6")
+    .innerHTML =  open6;
+
+    const inter6  = (((months - 5) / dip) * amt).toFixed(2);    
+    document.querySelector("#inter6")
+    .innerHTML =  inter6;
+
+    const princ6  = moni6 - inter6;    
+    document.querySelector("#princ6")
+    .innerHTML =  princ6;
+
+
+    // start7
+
+    const moni7  = moni6;    
+    document.querySelector("#moni7")
+    .innerHTML =  moni7;
+
+    const open7  = (open6 - princ6).toFixed(2);    
+    document.querySelector("#open7")
+    .innerHTML =  open7;
+
+    const inter7  = (((months - 6) / dip) * amt).toFixed(2);    
+    document.querySelector("#inter7")
+    .innerHTML =  inter7;
+
+    const princ7  = moni7 - inter7;    
+    document.querySelector("#princ7")
+    .innerHTML =  princ7;
+
+
+    // start8 8
+
+    const moni8  = moni7;    
+    document.querySelector("#moni8")
+    .innerHTML =  moni8;
+
+    const open8  = (open7 - princ7).toFixed(2);    
+    document.querySelector("#open8")
+    .innerHTML =  open8;
+
+    const inter8  = (((months - 7) / dip) * amt).toFixed(2);    
+    document.querySelector("#inter8")
+    .innerHTML =  inter8;
+
+    const princ8  = moni8 - inter8;    
+    document.querySelector("#princ8")
+    .innerHTML =  princ8;
+
+        // start9 9
+
+        const moni9  = moni8;    
+        document.querySelector("#moni9")
+        .innerHTML =  moni9;
+
+        const open9  = (open8 - princ8).toFixed(2);    
+        document.querySelector("#open9")
+        .innerHTML =  open9;
+
+        const inter9  = (((months - 8) / dip) * amt).toFixed(2);    
+        document.querySelector("#inter9")
+        .innerHTML =  inter9;
+
+        const princ9  = moni9 - inter9;    
+        document.querySelector("#princ9")
+        .innerHTML =  princ9;
+
+        // start10
+
+        const moni10  = moni9;    
+        document.querySelector("#moni10")
+        .innerHTML =  moni10;
+
+        const open10  = (open9 - princ9).toFixed(2);    
+        document.querySelector("#open10")
+        .innerHTML =  open10;
+
+        const inter10  = (((months - 9) / dip) * amt).toFixed(2);    
+        document.querySelector("#inter10")
+        .innerHTML =  inter10;
+
+        const princ10  = moni10 - inter10;    
+        document.querySelector("#princ10")
+        .innerHTML =  princ10;
+
+        // start11
+
+        const moni11  = moni10;    
+        document.querySelector("#moni11")
+        .innerHTML =  moni11;
+
+        const open11  = (open10 - princ10).toFixed(2);    
+        document.querySelector("#open11")
+        .innerHTML =  open11;
+
+        const inter11  = (((months - 10) / dip) * amt).toFixed(2);    
+        document.querySelector("#inter11")
+        .innerHTML =  inter11;
+
+        const princ11  = moni11 - inter11;    
+        document.querySelector("#princ11")
+        .innerHTML =  princ11;
+
+        // start12
+
+        const moni12  = moni11;    
+        document.querySelector("#moni12")
+        .innerHTML =  moni12;
+
+        const open12  = (open11 - princ11).toFixed(2);    
+        document.querySelector("#open12")
+        .innerHTML =  open12;
+
+        const inter12  = (((months - 11) / dip) * amt).toFixed(2);    
+        document.querySelector("#inter12")
+        .innerHTML =  inter12;
+
+        const princ12  = moni12 - inter12;    
+        document.querySelector("#princ12")
+        .innerHTML =  princ12;
+
+
+          // console.log  (amount);
+          // console.log (amt);
+          // console.log   (loa);
+          // console.log(dipp);
+          // console.log(dip);
+          // console.log(totaltb);
+          // console.log(totaltb111);
+
+          // console.log(total);
+      }  
+  </script>

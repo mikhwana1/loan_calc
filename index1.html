@@ -1,0 +1,1879 @@
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://img2.pngio.com/accountant-accounting-calculate-calculation-calculator-math-accounting-calculator-png-512_512.png" type="image/gif" sizes="16x16">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" >
+    <title>Rule of 78 Calculator</title>
+</head>
+<body class="bg-primary">
+    <div class="contianer">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card card-body text-center mt-5">
+                    <h1 class="heading display-5 pb-3"> Loan Calculator</h1>
+                    <form id="loan-form">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-text">Rp</span>
+                                <input type="number" class="form-control" id="amount" placeholder="PRINCIPAL" onchange="Calculate()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-text">%</span>
+                                <input type="number" class="form-control" id="rate" placeholder="rate" onchange="Calculate()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" id="months" placeholder="TERM" onchange="Calculate()" oninput="maxLengthCheck(this)" min="0" max="60">
+                        </div>
+                        
+
+                        <h2 id="total"></h2>
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th scope="col" class="text-center">TERM</th>
+                                  <th scope="col" class="text-center">PRINCIPAL</th>
+                                  <th scope="col" class="text-center">INTEREST</th>
+                                  <th scope="col" class="text-center">MONHTLY INSTALLMENT</th>
+                                  <th scope="col" class="text-center">OPENING PRINC</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th class="text-center">1</th>
+                              <td id="princ1" class="text-center"></td>
+                              <td id="inter1" class="text-center"></td>
+                              <td id="moni1" onchange="Calculate()" class="text-center"></td>
+                              <td id="open1" class="text-center"></td>
+                          </tr>
+                          <tr>
+                              <th class="text-center">2</th>
+                              <td id="princ2" class="text-center"></td>
+                              <td id="inter2" class="text-center"></td>
+                              <td id="moni2" onchange="Calculate()" class="text-center"></td>
+                              <td id="open2" class="text-center"></td>
+
+                          </tr>
+                          <tr>
+                              <th class="text-center">3</th>
+                              <td id="princ3" class="text-center"></td>
+                              <td id="inter3" class="text-center"></td>
+                              <td id="moni3" onchange="Calculate()" class="text-center"></td>
+                              <td id="open3" class="text-center"></td>
+                          </tr>
+
+                          <tr>
+                              <th class="text-center">4</th>
+                              <td id="princ4" class="text-center"></td>
+                              <td id="inter4" class="text-center"></td>
+                              <td id="moni4" onchange="Calculate()" class="text-center"></td>
+                              <td id="open4" class="text-center"></td>
+                          </tr>
+
+                          <tr>
+                              <th class="text-center">5</th>
+                              <td id="princ5" class="text-center"></td>
+                              <td id="inter5" class="text-center"></td>
+                              <td id="moni5" onchange="Calculate()" class="text-center"></td>
+                              <td id="open5" class="text-center"></td>
+                          </tr>
+
+                          <tr>
+                            <th class="text-center">6</th>
+                            <td id="princ6" class="text-center"></td>
+                            <td id="inter6" class="text-center"></td>
+                            <td id="moni6" onchange="Calculate()" class="text-center"></td>
+                            <td id="open6" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">7</th>
+                            <td id="princ7" class="text-center"></td>
+                            <td id="inter7" class="text-center"></td>
+                            <td id="moni7" onchange="Calculate()" class="text-center"></td>
+                            <td id="open7" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">8</th>
+                            <td id="princ8" class="text-center"></td>
+                            <td id="inter8" class="text-center"></td>
+                            <td id="moni8" onchange="Calculate()" class="text-center"></td>
+                            <td id="open8" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">9</th>
+                            <td id="princ9" class="text-center"></td>
+                            <td id="inter9" class="text-center"></td>
+                            <td id="moni9" onchange="Calculate()" class="text-center"></td>
+                            <td id="open9" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">10</th>
+                            <td id="princ10" class="text-center"></td>
+                            <td id="inter10" class="text-center"></td>
+                            <td id="moni10" onchange="Calculate()" class="text-center"></td>
+                            <td id="open10" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">11</th>
+                            <td id="princ11" class="text-center"></td>
+                            <td id="inter11" class="text-center"></td>
+                            <td id="moni11" onchange="Calculate()" class="text-center"></td>
+                            <td id="open11" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">12</th>
+                            <td id="princ12" class="text-center"></td>
+                            <td id="inter12" class="text-center"></td>
+                            <td id="moni12" onchange="Calculate()" class="text-center"></td>
+                            <td id="open12" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">13</th>
+                            <td id="princ13" class="text-center"></td>
+                            <td id="inter13" class="text-center"></td>
+                            <td id="moni13" onchange="Calculate()" class="text-center"></td>
+                            <td id="open13" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">14</th>
+                            <td id="princ14" class="text-center"></td>
+                            <td id="inter14" class="text-center"></td>
+                            <td id="moni14" onchange="Calculate()" class="text-center"></td>
+                            <td id="open14" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">15</th>
+                            <td id="princ15" class="text-center"></td>
+                            <td id="inter15" class="text-center"></td>
+                            <td id="moni15" onchange="Calculate()" class="text-center"></td>
+                            <td id="open15" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">16</th>
+                            <td id="princ16" class="text-center"></td>
+                            <td id="inter16" class="text-center"></td>
+                            <td id="moni16" onchange="Calculate()" class="text-center"></td>
+                            <td id="open16" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">17</th>
+                            <td id="princ17" class="text-center"></td>
+                            <td id="inter17" class="text-center"></td>
+                            <td id="moni17" onchange="Calculate()" class="text-center"></td>
+                            <td id="open17" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">18</th>
+                            <td id="princ18" class="text-center"></td>
+                            <td id="inter18" class="text-center"></td>
+                            <td id="moni18" onchange="Calculate()" class="text-center"></td>
+                            <td id="open18" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">19</th>
+                            <td id="princ19" class="text-center"></td>
+                            <td id="inter19" class="text-center"></td>
+                            <td id="moni19" onchange="Calculate()" class="text-center"></td>
+                            <td id="open19" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">20</th>
+                            <td id="princ20" class="text-center"></td>
+                            <td id="inter20" class="text-center"></td>
+                            <td id="moni20" onchange="Calculate()" class="text-center"></td>
+                            <td id="open20" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">21</th>
+                            <td id="princ21" class="text-center"></td>
+                            <td id="inter21" class="text-center"></td>
+                            <td id="moni21" onchange="Calculate()" class="text-center"></td>
+                            <td id="open21" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">22</th>
+                            <td id="princ22" class="text-center"></td>
+                            <td id="inter22" class="text-center"></td>
+                            <td id="moni22" onchange="Calculate()" class="text-center"></td>
+                            <td id="open22" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">23</th>
+                            <td id="princ23" class="text-center"></td>
+                            <td id="inter23" class="text-center"></td>
+                            <td id="moni23" onchange="Calculate()" class="text-center"></td>
+                            <td id="open23" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">24</th>
+                            <td id="princ24" class="text-center"></td>
+                            <td id="inter24" class="text-center"></td>
+                            <td id="moni24" onchange="Calculate()" class="text-center"></td>
+                            <td id="open24" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">25</th>
+                            <td id="princ25" class="text-center"></td>
+                            <td id="inter25" class="text-center"></td>
+                            <td id="moni25" onchange="Calculate()" class="text-center"></td>
+                            <td id="open25" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">26</th>
+                            <td id="princ26" class="text-center"></td>
+                            <td id="inter26" class="text-center"></td>
+                            <td id="moni26" onchange="Calculate()" class="text-center"></td>
+                            <td id="open26" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">27</th>
+                            <td id="princ27" class="text-center"></td>
+                            <td id="inter27" class="text-center"></td>
+                            <td id="moni27" onchange="Calculate()" class="text-center"></td>
+                            <td id="open27" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">28</th>
+                            <td id="princ28" class="text-center"></td>
+                            <td id="inter28" class="text-center"></td>
+                            <td id="moni28" onchange="Calculate()" class="text-center"></td>
+                            <td id="open28" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">29</th>
+                            <td id="princ29" class="text-center"></td>
+                            <td id="inter29" class="text-center"></td>
+                            <td id="moni29" onchange="Calculate()" class="text-center"></td>
+                            <td id="open29" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">30</th>
+                            <td id="princ30" class="text-center"></td>
+                            <td id="inter30" class="text-center"></td>
+                            <td id="moni30" onchange="Calculate()" class="text-center"></td>
+                            <td id="open30" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">31</th>
+                            <td id="princ31" class="text-center"></td>
+                            <td id="inter31" class="text-center"></td>
+                            <td id="moni31" onchange="Calculate()" class="text-center"></td>
+                            <td id="open31" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">32</th>
+                            <td id="princ32" class="text-center"></td>
+                            <td id="inter32" class="text-center"></td>
+                            <td id="moni32" onchange="Calculate()" class="text-center"></td>
+                            <td id="open32" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">33</th>
+                            <td id="princ33" class="text-center"></td>
+                            <td id="inter33" class="text-center"></td>
+                            <td id="moni33" onchange="Calculate()" class="text-center"></td>
+                            <td id="open33" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">34</th>
+                            <td id="princ34" class="text-center"></td>
+                            <td id="inter34" class="text-center"></td>
+                            <td id="moni34" onchange="Calculate()" class="text-center"></td>
+                            <td id="open34" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">35</th>
+                            <td id="princ35" class="text-center"></td>
+                            <td id="inter35" class="text-center"></td>
+                            <td id="moni35" onchange="Calculate()" class="text-center"></td>
+                            <td id="open35" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">36</th>
+                            <td id="princ36" class="text-center"></td>
+                            <td id="inter36" class="text-center"></td>
+                            <td id="moni36" onchange="Calculate()" class="text-center"></td>
+                            <td id="open36" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">37</th>
+                            <td id="princ37" class="text-center"></td>
+                            <td id="inter37" class="text-center"></td>
+                            <td id="moni37" onchange="Calculate()" class="text-center"></td>
+                            <td id="open37" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">38</th>
+                            <td id="princ38" class="text-center"></td>
+                            <td id="inter38" class="text-center"></td>
+                            <td id="moni38" onchange="Calculate()" class="text-center"></td>
+                            <td id="open38" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">39</th>
+                            <td id="princ39" class="text-center"></td>
+                            <td id="inter39" class="text-center"></td>
+                            <td id="moni39" onchange="Calculate()" class="text-center"></td>
+                            <td id="open39" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">40</th>
+                            <td id="princ40" class="text-center"></td>
+                            <td id="inter40" class="text-center"></td>
+                            <td id="moni40" onchange="Calculate()" class="text-center"></td>
+                            <td id="open40" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">41</th>
+                            <td id="princ41" class="text-center"></td>
+                            <td id="inter41" class="text-center"></td>
+                            <td id="moni41" onchange="Calculate()" class="text-center"></td>
+                            <td id="open41" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">42</th>
+                            <td id="princ42" class="text-center"></td>
+                            <td id="inter42" class="text-center"></td>
+                            <td id="moni42" onchange="Calculate()" class="text-center"></td>
+                            <td id="open42" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">43</th>
+                            <td id="princ43" class="text-center"></td>
+                            <td id="inter43" class="text-center"></td>
+                            <td id="moni43" onchange="Calculate()" class="text-center"></td>
+                            <td id="open43" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">44</th>
+                            <td id="princ44" class="text-center"></td>
+                            <td id="inter44" class="text-center"></td>
+                            <td id="moni44" onchange="Calculate()" class="text-center"></td>
+                            <td id="open44" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">45</th>
+                            <td id="princ45" class="text-center"></td>
+                            <td id="inter45" class="text-center"></td>
+                            <td id="moni45" onchange="Calculate()" class="text-center"></td>
+                            <td id="open45" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">46</th>
+                            <td id="princ46" class="text-center"></td>
+                            <td id="inter46" class="text-center"></td>
+                            <td id="moni46" onchange="Calculate()" class="text-center"></td>
+                            <td id="open46" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">47</th>
+                            <td id="princ47" class="text-center"></td>
+                            <td id="inter47" class="text-center"></td>
+                            <td id="moni47" onchange="Calculate()" class="text-center"></td>
+                            <td id="open47" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">48</th>
+                            <td id="princ48" class="text-center"></td>
+                            <td id="inter48" class="text-center"></td>
+                            <td id="moni48" onchange="Calculate()" class="text-center"></td>
+                            <td id="open48" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">49</th>
+                            <td id="princ49" class="text-center"></td>
+                            <td id="inter49" class="text-center"></td>
+                            <td id="moni49" onchange="Calculate()" class="text-center"></td>
+                            <td id="open49" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">50</th>
+                            <td id="princ50" class="text-center"></td>
+                            <td id="inter50" class="text-center"></td>
+                            <td id="moni50" onchange="Calculate()" class="text-center"></td>
+                            <td id="open50" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">51</th>
+                            <td id="princ51" class="text-center"></td>
+                            <td id="inter51" class="text-center"></td>
+                            <td id="moni51" onchange="Calculate()" class="text-center"></td>
+                            <td id="open51" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">52</th>
+                            <td id="princ52" class="text-center"></td>
+                            <td id="inter52" class="text-center"></td>
+                            <td id="moni52" onchange="Calculate()" class="text-center"></td>
+                            <td id="open52" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">53</th>
+                            <td id="princ53" class="text-center"></td>
+                            <td id="inter53" class="text-center"></td>
+                            <td id="moni53" onchange="Calculate()" class="text-center"></td>
+                            <td id="open53" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">54</th>
+                            <td id="princ54" class="text-center"></td>
+                            <td id="inter54" class="text-center"></td>
+                            <td id="moni54" onchange="Calculate()" class="text-center"></td>
+                            <td id="open54" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">55</th>
+                            <td id="princ55" class="text-center"></td>
+                            <td id="inter55" class="text-center"></td>
+                            <td id="moni55" onchange="Calculate()" class="text-center"></td>
+                            <td id="open55" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">56</th>
+                            <td id="princ56" class="text-center"></td>
+                            <td id="inter56" class="text-center"></td>
+                            <td id="moni56" onchange="Calculate()" class="text-center"></td>
+                            <td id="open56" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">57</th>
+                            <td id="princ57" class="text-center"></td>
+                            <td id="inter57" class="text-center"></td>
+                            <td id="moni57" onchange="Calculate()" class="text-center"></td>
+                            <td id="open57" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">58</th>
+                            <td id="princ58" class="text-center"></td>
+                            <td id="inter58" class="text-center"></td>
+                            <td id="moni58" onchange="Calculate()" class="text-center"></td>
+                            <td id="open58" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">59</th>
+                            <td id="princ59" class="text-center"></td>
+                            <td id="inter59" class="text-center"></td>
+                            <td id="moni59" onchange="Calculate()" class="text-center"></td>
+                            <td id="open59" class="text-center"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="text-center">60</th>
+                            <td id="princ60" class="text-center"></td>
+                            <td id="inter60" class="text-center"></td>
+                            <td id="moni60" onchange="Calculate()" class="text-center"></td>
+                            <td id="open60" class="text-center"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+        </form>
+
+    </div>
+</div>
+</div>    
+</div>  
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<style type="">
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Ubuntu:wght@500&display=swap');
+
+    body,html{
+        margin: 0px;
+        padding: 0px;
+        overflow: auto;
+        font-family: 'Ubuntu', sans-serif;
+        background-image: url("background_image.jpeg");
+        background-repeat: repeat;
+        background-size: cover;
+        height: 100%;
+    }
+
+/* Heading */
+.heading{
+    font-family: 'Pacifico', cursive;
+}
+
+
+#loading img{
+    width: 35%;
+    height: 35%;
+}
+
+#loading, #results{
+    display: none;
+}
+</style>
+
+<script>
+
+  function maxLengthCheck(object) {
+    if (object.value.length > object.max.length)
+      object.value = object.value.slice(0, object.max.length)
+}
+
+function Calculate() {
+
+    // Extracting value in the amount 
+    // section in the variable
+    const amount = document.querySelector("#amount").value;
+    
+    // Extracting value in the interest
+    // rate section in the variable
+    const rate = document.querySelector("#rate").value;
+    
+    // Extracting value in the months 
+    // section in the variable
+    const months = document.querySelector("#months").value;
+    
+
+
+
+
+// Calculateinterestapr
+
+const apr = ((rate) * 12 / 100);
+
+
+    // calculate amt percent yg p
+
+    const  amt = (amount * apr * (months / 12));
+
+// calculate loan amount
+
+const loa = ((amount * amt) / amt + amt);
+
+
+const dipp = ((months * months) / months + 1);
+
+const dip = ((months * dipp) / 2);
+
+
+
+    // Calculating interest per month
+    // const interest = (amount * apr * (months / 12))
+    
+    // Calculating total payment
+    // const total = ((amount / months) + interest).toFixed(2);
+
+ // calculate total 
+ // const total  = ((loa) / months).toFixed(2);    
+ // document.querySelector("#total")
+ // .innerHTML = "Total. Rp" + total;
+
+
+ const total  = (loa / months).toFixed(2);    
+ document.querySelector("#total")
+ .innerHTML = "Total. Rp" + total;
+
+// start1
+
+
+
+const moni1  = (loa / months).toFixed(2);    
+document.querySelector("#moni1")
+.innerHTML =  moni1;
+
+const open1  = amount;    
+document.querySelector("#open1")
+.innerHTML =  open1;
+
+const inter1  = ((months / dip) * amt).toFixed(2);    
+document.querySelector("#inter1")
+.innerHTML =  inter1;
+
+const princ1  = moni1 - inter1;    
+document.querySelector("#princ1")
+.innerHTML =  princ1.toFixed(2);
+
+
+// start2
+
+
+const open2  = (amount - princ1).toFixed(2);    
+document.querySelector("#open2")
+.innerHTML =  open2;
+
+const moni2  = moni1;
+if (open2 > 0) {
+    document.querySelector("#moni2")
+    .innerHTML =  moni2;    
+}else   {
+    document.querySelector("#moni2")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter2  = (((months - 1) / dip) * amt).toFixed(2);    
+document.querySelector("#inter2")
+.innerHTML =  inter2;
+
+const princ2  = (moni2 - inter2).toFixed(2);  
+
+if (inter2 > 0) {
+    document.querySelector("#princ2")
+    .innerHTML =  princ2;
+
+} else{
+    document.querySelector("#princ2")
+    .innerHTML =  (0).toFixed(2);
+} 
+
+
+
+// start3
+const open3  = (open2 - princ2).toFixed(2);
+if (open3 > 0) {
+    document.querySelector("#open3")
+    .innerHTML =  open3;    
+}else{
+    document.querySelector("#open3")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni3  = moni2;
+if (open3 > 0) {
+    document.querySelector("#moni3")
+    .innerHTML =  moni3;    
+}else   {
+    document.querySelector("#moni3")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter3  = (((months - 2) / dip) * amt).toFixed(2);
+if (open3 > 0) {
+    document.querySelector("#inter3")
+    .innerHTML =  inter3;    
+}else{
+    document.querySelector("#inter3")
+    .innerHTML =  (0).toFixed(2);    
+}
+
+
+const princ3  = (moni3 - inter3).toFixed(2);  
+
+if (inter3 > 0) {
+    document.querySelector("#princ3")
+    .innerHTML =  princ3;
+
+} else{
+    document.querySelector("#princ3")
+    .innerHTML =  (0).toFixed(2);
+} 
+
+
+// start4
+const open4  = (open3 - princ3).toFixed(2);
+if (open4 > 0) {
+    document.querySelector("#open4")
+    .innerHTML =  open4;    
+}else{
+    document.querySelector("#open4")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni4  = moni3;
+if (open4 > 0) {
+    document.querySelector("#moni4")
+    .innerHTML =  moni4;    
+}else   {
+    document.querySelector("#moni4")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter4  = (((months - 3) / dip) * amt).toFixed(2);
+if (open4 > 0) {
+    document.querySelector("#inter4")
+    .innerHTML =  inter4;    
+}else{
+    document.querySelector("#inter4")
+    .innerHTML =  (0).toFixed(2);    
+}
+
+
+const princ4  = (moni4 - inter4).toFixed(2);  
+
+if (inter4 > 0) {
+    document.querySelector("#princ4")
+    .innerHTML =  princ4;
+
+} else{
+    document.querySelector("#princ4")
+    .innerHTML =  (0).toFixed(2);
+} 
+
+
+// start5
+const open5  = (open4 - princ4).toFixed(2);
+if (open5 > 0) {
+    document.querySelector("#open5")
+    .innerHTML =  open5;
+}else{
+    document.querySelector("#open5")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni5  = moni4;
+if (open5 > 0) {
+    document.querySelector("#moni5")
+    .innerHTML =  moni5;
+}else   {
+    document.querySelector("#moni5")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter5  = (((months - 4) / dip) * amt).toFixed(2);
+if (open5 > 0) {
+    document.querySelector("#inter5")
+    .innerHTML =  inter5;
+}else{
+    document.querySelector("#inter5")
+    .innerHTML =  (0).toFixed(2);    
+}
+
+
+const princ5  = (moni5 - inter5).toFixed(2);  
+
+if (inter5 > 0) {
+    document.querySelector("#princ5")
+    .innerHTML =  princ5;
+
+} else{
+    document.querySelector("#princ5")
+    .innerHTML =  (0).toFixed(2);
+} 
+
+
+// start6
+const open6  = (open5 - princ5).toFixed(2);
+if (open6 > 0) {
+    document.querySelector("#open6")
+    .innerHTML =  open6;
+}else{
+    document.querySelector("#open6")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni6  = moni5;
+if (open6 > 0) {
+    document.querySelector("#moni6")
+    .innerHTML =  moni6;
+}else   {
+    document.querySelector("#moni6")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter6  = (((months - 5) / dip) * amt).toFixed(2);
+if (open6 > 0) {
+    document.querySelector("#inter6")
+    .innerHTML =  inter6;
+}else{
+    document.querySelector("#inter6")
+    .innerHTML =  (0).toFixed(2);    
+}
+
+
+const princ6  = (moni6 - inter6).toFixed(2);  
+
+if (inter6 > 0) {
+    document.querySelector("#princ6")
+    .innerHTML =  princ6;
+
+} else{
+    document.querySelector("#princ6")
+    .innerHTML =  (0).toFixed(2);
+} 
+
+
+// start7
+const open7  = (open6 - princ6).toFixed(2);
+if (open7 > 0) {
+    document.querySelector("#open7")
+    .innerHTML =  open7;
+}else{
+    document.querySelector("#open7")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni7  = moni6;
+if (open7 > 0) {
+    document.querySelector("#moni7")
+    .innerHTML =  moni7;
+}else   {
+    document.querySelector("#moni7")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter7  = (((months - 6) / dip) * amt).toFixed(2);
+if (open7 > 0) {
+    document.querySelector("#inter7")
+    .innerHTML =  inter7;
+}else{
+    document.querySelector("#inter7")
+    .innerHTML =  (0).toFixed(2);    
+}
+
+
+const princ7  = (moni7 - inter7).toFixed(2);  
+
+if (inter7 > 0) {
+    document.querySelector("#princ7")
+    .innerHTML =  princ7;
+
+} else{
+    document.querySelector("#princ7")
+    .innerHTML =  (0).toFixed(2);
+} 
+
+
+// start8
+const open8  = (open7 - princ7).toFixed(2);
+if (open8 > 0) {
+    document.querySelector("#open8")
+    .innerHTML =  open8;
+}else{
+    document.querySelector("#open8")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni8  = moni7;
+if (open8 > 0) {
+    document.querySelector("#moni8")
+    .innerHTML =  moni8;
+}else   {
+    document.querySelector("#moni8")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter8  = (((months - 7) / dip) * amt).toFixed(2);
+if (open8 > 0) {
+    document.querySelector("#inter8")
+    .innerHTML =  inter8;
+}else{
+    document.querySelector("#inter8")
+    .innerHTML =  (0).toFixed(2);    
+}
+
+
+const princ8  = (moni8 - inter8).toFixed(2);  
+
+if (inter8 > 0) {
+    document.querySelector("#princ8")
+    .innerHTML =  princ8;
+
+} else{
+    document.querySelector("#princ8")
+    .innerHTML =  (0).toFixed(2);
+} 
+
+// start9
+const open9  = (open8 - princ8).toFixed(2);
+if (open9 > 0) {
+    document.querySelector("#open9")
+    .innerHTML =  open9;
+}else{
+    document.querySelector("#open9")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni9  = moni8;
+if (open9 > 0) {
+    document.querySelector("#moni9")
+    .innerHTML =  moni9;
+}else   {
+    document.querySelector("#moni9")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter9  = (((months - 8) / dip) * amt).toFixed(2);
+if (open9 > 0) {
+    document.querySelector("#inter9")
+    .innerHTML =  inter9;
+}else{
+    document.querySelector("#inter9")
+    .innerHTML =  (0).toFixed(2);    
+}
+
+
+const princ9  = (moni9 - inter9).toFixed(2);  
+
+if (inter9 > 0) {
+    document.querySelector("#princ9")
+    .innerHTML =  princ9;
+
+} else{
+    document.querySelector("#princ9")
+    .innerHTML =  (0).toFixed(2);
+} 
+
+
+// start10
+const open10  = (open9 - princ9).toFixed(2);
+if (open10 > 0) {
+    document.querySelector("#open10")
+    .innerHTML =  open10;
+}else{
+    document.querySelector("#open10")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni10  = moni9;
+if (open10 > 0) {
+    document.querySelector("#moni10")
+    .innerHTML =  moni10;
+}else   {
+    document.querySelector("#moni10")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter10  = (((months - 9) / dip) * amt).toFixed(2);
+if (open10 > 0) {
+    document.querySelector("#inter10")
+    .innerHTML =  inter10;
+}else{
+    document.querySelector("#inter10")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ10  = (moni10 - inter10).toFixed(2);  
+
+if (inter10 > 0) {
+    document.querySelector("#princ10")
+    .innerHTML =  princ10;
+
+} else{
+    document.querySelector("#princ10")
+    .innerHTML =  (0).toFixed(2);
+}
+
+
+// start11
+const open11  = (open10 - princ10).toFixed(2);
+if (open11 > 0) {
+    document.querySelector("#open11")
+    .innerHTML =  open11;
+}else{
+    document.querySelector("#open11")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni11  = moni10;
+if (open11 > 0) {
+    document.querySelector("#moni11")
+    .innerHTML =  moni11;
+}else   {
+    document.querySelector("#moni11")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter11  = (((months - 10) / dip) * amt).toFixed(2);
+if (open11 > 0) {
+    document.querySelector("#inter11")
+    .innerHTML =  inter11;
+}else{
+    document.querySelector("#inter11")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+
+const princ11  = (moni11 - inter11).toFixed(2);  
+
+if (inter11 > 0) {
+    document.querySelector("#princ11")
+    .innerHTML =  princ11;
+
+} else{
+    document.querySelector("#princ11")
+    .innerHTML =  (0).toFixed(2);
+}
+
+
+// start12
+const open12  = (open11 - princ11).toFixed(2);
+if (open12 > 0) {
+    document.querySelector("#open12")
+    .innerHTML =  open12;
+}else{
+    document.querySelector("#open12")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni12  = moni11;
+if (open12 > 0) {
+    document.querySelector("#moni12")
+    .innerHTML =  moni12;
+}else   {
+    document.querySelector("#moni12")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter12  = (((months - 11) / dip) * amt).toFixed(2);
+if (open12 > 0) {
+    document.querySelector("#inter12")
+    .innerHTML =  inter12;
+}else{
+    document.querySelector("#inter12")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+
+const princ12  = (moni12 - inter12).toFixed(2);  
+
+if (inter12 > 0) {
+    document.querySelector("#princ12")
+    .innerHTML =  princ12;
+
+} else{
+    document.querySelector("#princ12")
+    .innerHTML =  (0).toFixed(2);
+}
+
+// start13
+const open13  = (open12 - princ12).toFixed(2);
+if (open13 > 0) {
+    document.querySelector("#open13")
+    .innerHTML =  open13;
+}else{
+    document.querySelector("#open13")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni13  = moni12;
+if (open13 > 0) {
+    document.querySelector("#moni13")
+    .innerHTML =  moni13;
+}else   {
+    document.querySelector("#moni13")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter13  = (((months - 12) / dip) * amt).toFixed(2);
+if (open13 > 0) {
+    document.querySelector("#inter13")
+    .innerHTML =  inter13;
+}else{
+    document.querySelector("#inter13")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+
+const princ13  = (moni13 - inter13).toFixed(2);  
+
+if (inter13 > 0) {
+    document.querySelector("#princ13")
+    .innerHTML =  princ13;
+
+} else{
+    document.querySelector("#princ13")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start14
+const open14  = (open13 - princ13).toFixed(2);
+if (open14 > 0) {
+    document.querySelector("#open14")
+    .innerHTML =  open14;
+}else{
+    document.querySelector("#open14")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni14  = moni13;
+if (open14 > 0) {
+    document.querySelector("#moni14")
+    .innerHTML =  moni14;
+}else   {
+    document.querySelector("#moni14")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter14  = (((months - 13) / dip) * amt).toFixed(2);
+if (open14 > 0) {
+    document.querySelector("#inter14")
+    .innerHTML =  inter14;
+}else{
+    document.querySelector("#inter14")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+
+const princ14  = (moni14 - inter14).toFixed(2);  
+
+if (inter14 > 0) {
+    document.querySelector("#princ14")
+    .innerHTML =  princ14;
+
+} else{
+    document.querySelector("#princ14")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start15
+const open15  = (open14 - princ14).toFixed(2);
+if (open15 > 0) {
+    document.querySelector("#open15")
+    .innerHTML =  open15;
+}else{
+    document.querySelector("#open15")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni15  = moni14;
+if (open15 > 0) {
+    document.querySelector("#moni15")
+    .innerHTML =  moni14;
+}else   {
+    document.querySelector("#moni15")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter15  = (((months - 14) / dip) * amt).toFixed(2);
+if (open15 > 0) {
+    document.querySelector("#inter15")
+    .innerHTML =  inter15;
+}else{
+    document.querySelector("#inter15")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+
+const princ15  = (moni15 - inter15).toFixed(2);  
+
+if (inter15 > 0) {
+    document.querySelector("#princ15")
+    .innerHTML =  princ15;
+
+} else{
+    document.querySelector("#princ15")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start16
+const open16  = (open15 - princ15).toFixed(2);
+if (open16 > 0) {
+    document.querySelector("#open16")
+    .innerHTML =  open16;
+}else{
+    document.querySelector("#open16")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni16  = moni15;
+if (open16 > 0) {
+    document.querySelector("#moni16")
+    .innerHTML =  moni15;
+}else   {
+    document.querySelector("#moni16")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter16  = (((months - 15) / dip) * amt).toFixed(2);
+if (open16 > 0) {
+    document.querySelector("#inter16")
+    .innerHTML =  inter16;
+}else{
+    document.querySelector("#inter16")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+
+const princ16  = (moni16 - inter16).toFixed(2);  
+
+if (inter16 > 0) {
+    document.querySelector("#princ16")
+    .innerHTML =  princ16;
+
+} else{
+    document.querySelector("#princ16")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start17
+const open17  = (open16 - princ16).toFixed(2);
+if (open17 > 0) {
+    document.querySelector("#open17")
+    .innerHTML =  open17;
+}else{
+    document.querySelector("#open17")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni17  = moni16;
+if (open17 > 0) {
+    document.querySelector("#moni17")
+    .innerHTML =  moni16;
+}else   {
+    document.querySelector("#moni17")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter17  = (((months - 16) / dip) * amt).toFixed(2);
+if (open17 > 0) {
+    document.querySelector("#inter17")
+    .innerHTML =  inter17;
+}else{
+    document.querySelector("#inter17")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+
+const princ17  = (moni17 - inter17).toFixed(2);  
+
+if (inter17 > 0) {
+    document.querySelector("#princ17")
+    .innerHTML =  princ17;
+
+} else{
+    document.querySelector("#princ17")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start18
+const open18  = (open17 - princ17).toFixed(2);
+if (open18 > 0) {
+    document.querySelector("#open18")
+    .innerHTML =  open18;
+}else{
+    document.querySelector("#open18")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni18  = moni17;
+if (open18 > 0) {
+    document.querySelector("#moni18")
+    .innerHTML =  moni17;
+}else   {
+    document.querySelector("#moni18")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter18  = (((months - 17) / dip) * amt).toFixed(2);
+if (open18 > 0) {
+    document.querySelector("#inter18")
+    .innerHTML =  inter18;
+}else{
+    document.querySelector("#inter18")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ18  = (moni18 - inter18).toFixed(2);  
+
+if (inter18 > 0) {
+    document.querySelector("#princ18")
+    .innerHTML =  princ18;
+
+} else{
+    document.querySelector("#princ18")
+    .innerHTML=  (0).toFixed(2);
+}
+
+// start19
+const open19  = (open18 - princ18).toFixed(2);
+if (open19 > 0) {
+    document.querySelector("#open19")
+    .innerHTML =  open19;
+}else{
+    document.querySelector("#open19")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni19  = moni18;
+if (open19 > 0) {
+    document.querySelector("#moni19")
+    .innerHTML =  moni18;
+}else   {
+    document.querySelector("#moni19")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter19  = (((months - 18) / dip) * amt).toFixed(2);
+if (open19 > 0) {
+    document.querySelector("#inter19")
+    .innerHTML =  inter19;
+}else{
+    document.querySelector("#inter19")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ19  = (moni19 - inter19).toFixed(2);  
+
+if (inter19 > 0) {
+    document.querySelector("#princ19")
+    .innerHTML =  princ19;
+
+} else{
+    document.querySelector("#princ19")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start20
+const open20  = (open19 - princ19).toFixed(2);
+if (open20 > 0) {
+    document.querySelector("#open20")
+    .innerHTML =  open20;
+}else{
+    document.querySelector("#open20")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni20  = moni19;
+if (open20 > 0) {
+    document.querySelector("#moni20")
+    .innerHTML =  moni19;
+}else   {
+    document.querySelector("#moni20")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter20  = (((months - 19) / dip) * amt).toFixed(2);
+if (open20 > 0) {
+    document.querySelector("#inter20")
+    .innerHTML =  inter20;
+}else{
+    document.querySelector("#inter20")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ20  = (moni20 - inter20).toFixed(2);  
+
+if (inter20 > 0) {
+    document.querySelector("#princ20")
+    .innerHTML =  princ20;
+
+} else{
+    document.querySelector("#princ20")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start21
+const open21  = (open20 - princ20).toFixed(2);
+if (open21 > 0) {
+    document.querySelector("#open21")
+    .innerHTML =  open21;
+}else{
+    document.querySelector("#open21")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni21  = moni20;
+if (open21 > 0) {
+    document.querySelector("#moni21")
+    .innerHTML =  moni20;
+}else   {
+    document.querySelector("#moni21")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter21  = (((months - 20) / dip) * amt).toFixed(2);
+if (open21 > 0) {
+    document.querySelector("#inter21")
+    .innerHTML =  inter21;
+}else{
+    document.querySelector("#inter21")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ21  = (moni21 - inter21).toFixed(2);  
+
+if (inter21 > 0) {
+    document.querySelector("#princ21")
+    .innerHTML =  princ21;
+
+} else{
+    document.querySelector("#princ21")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start22
+const open22  = (open21 - princ21).toFixed(2);
+if (open22 > 0) {
+    document.querySelector("#open22")
+    .innerHTML =  open22;
+}else{
+    document.querySelector("#open22")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni22  = moni21;
+if (open22 > 0) {
+    document.querySelector("#moni22")
+    .innerHTML =  moni21;
+}else   {
+    document.querySelector("#moni22")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter22  = (((months - 21) / dip) * amt).toFixed(2);
+if (open22 > 0) {
+    document.querySelector("#inter22")
+    .innerHTML =  inter22;
+}else{
+    document.querySelector("#inter22")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ22  = (moni22 - inter22).toFixed(2);  
+
+if (inter22 > 0) {
+    document.querySelector("#princ22")
+    .innerHTML =  princ22;
+
+} else{
+    document.querySelector("#princ22")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start23
+const open23  = (open22 - princ22).toFixed(2);
+if (open23 > 0) {
+    document.querySelector("#open23")
+    .innerHTML =  open23;
+}else{
+    document.querySelector("#open23")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni23  = moni22;
+if (open23 > 0) {
+    document.querySelector("#moni23")
+    .innerHTML =  moni22;
+}else   {
+    document.querySelector("#moni23")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter23  = (((months - 22) / dip) * amt).toFixed(2);
+if (open23 > 0) {
+    document.querySelector("#inter23")
+    .innerHTML =  inter23;
+}else{
+    document.querySelector("#inter23")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ23  = (moni23 - inter23).toFixed(2);  
+
+if (inter23 > 0) {
+    document.querySelector("#princ23")
+    .innerHTML =  princ23;
+
+} else{
+    document.querySelector("#princ23")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start24
+const open24  = (open23 - princ23).toFixed(2);
+if (open23 > 0) {
+    document.querySelector("#open24")
+    .innerHTML =  open24;
+}else{
+    document.querySelector("#open24")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni24  = moni23;
+if (open24 > 0) {
+    document.querySelector("#moni24")
+    .innerHTML =  moni23;
+}else   {
+    document.querySelector("#moni24")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter24  = (((months - 23) / dip) * amt).toFixed(2);
+if (open24 > 0) {
+    document.querySelector("#inter24")
+    .innerHTML =  inter24;
+}else{
+    document.querySelector("#inter24")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ24  = (moni24 - inter24).toFixed(2);  
+
+if (inter24 > 0) {
+    document.querySelector("#princ24")
+    .innerHTML =  princ24;
+
+} else{
+    document.querySelector("#princ24")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start25
+const open25  = (open24 - princ24).toFixed(2);
+if (open24 > 0) {
+    document.querySelector("#open25")
+    .innerHTML =  open25;
+}else{
+    document.querySelector("#open25")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni25  = moni24;
+if (open25 > 0) {
+    document.querySelector("#moni25")
+    .innerHTML =  moni24;
+}else   {
+    document.querySelector("#moni25")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter25  = (((months - 24) / dip) * amt).toFixed(2);
+if (open25 > 0) {
+    document.querySelector("#inter25")
+    .innerHTML =  inter25;
+}else{
+    document.querySelector("#inter25")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ25  = (moni25 - inter25).toFixed(2);  
+
+if (inter25 > 0) {
+    document.querySelector("#princ25")
+    .innerHTML =  princ25;
+
+} else{
+    document.querySelector("#princ25")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start26
+const open26  = (open25 - princ25).toFixed(2);
+if (open25 > 0) {
+    document.querySelector("#open26")
+    .innerHTML =  open26;
+}else{
+    document.querySelector("#open26")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni26  = moni25;
+if (open26 > 0) {
+    document.querySelector("#moni26")
+    .innerHTML =  moni25;
+}else   {
+    document.querySelector("#moni26")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter26  = (((months - 25) / dip) * amt).toFixed(2);
+if (open26 > 0) {
+    document.querySelector("#inter26")
+    .innerHTML =  inter26;
+}else{
+    document.querySelector("#inter26")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ26  = (moni26 - inter26).toFixed(2);  
+
+if (inter26 > 0) {
+    document.querySelector("#princ26")
+    .innerHTML =  princ26;
+
+} else{
+    document.querySelector("#princ26")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start27
+const open27  = (open26 - princ26).toFixed(2);
+if (open26 > 0) {
+    document.querySelector("#open27")
+    .innerHTML =  open27;
+}else{
+    document.querySelector("#open27")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni27  = moni26;
+if (open27 > 0) {
+    document.querySelector("#moni27")
+    .innerHTML =  moni26;
+}else   {
+    document.querySelector("#moni27")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter27  = (((months - 26) / dip) * amt).toFixed(2);
+if (open27 > 0) {
+    document.querySelector("#inter27")
+    .innerHTML =  inter27;
+}else{
+    document.querySelector("#inter27")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ27  = (moni27 - inter27).toFixed(2);  
+
+if (inter27 > 0) {
+    document.querySelector("#princ27")
+    .innerHTML =  princ27;
+
+} else{
+    document.querySelector("#princ27")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start28
+const open28  = (open27 - princ27).toFixed(2);
+if (open27 > 0) {
+    document.querySelector("#open28")
+    .innerHTML =  open28;
+}else{
+    document.querySelector("#open28")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni28  = moni27;
+if (open28 > 0) {
+    document.querySelector("#moni28")
+    .innerHTML =  moni27;
+}else   {
+    document.querySelector("#moni28")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter28  = (((months - 27) / dip) * amt).toFixed(2);
+if (open28 > 0) {
+    document.querySelector("#inter28")
+    .innerHTML =  inter28;
+}else{
+    document.querySelector("#inter28")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ28  = (moni28 - inter28).toFixed(2);  
+
+if (inter28 > 0) {
+    document.querySelector("#princ28")
+    .innerHTML =  princ28;
+
+} else{
+    document.querySelector("#princ28")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start29
+const open29  = (open28 - princ28).toFixed(2);
+if (open28 > 0) {
+    document.querySelector("#open29")
+    .innerHTML =  open29;
+}else{
+    document.querySelector("#open29")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni29  = moni28;
+if (open29 > 0) {
+    document.querySelector("#moni29")
+    .innerHTML =  moni28;
+}else   {
+    document.querySelector("#moni29")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter29  = (((months - 28) / dip) * amt).toFixed(2);
+if (open29 > 0) {
+    document.querySelector("#inter29")
+    .innerHTML =  inter29;
+}else{
+    document.querySelector("#inter29")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ29  = (moni29 - inter29).toFixed(2);  
+
+if (inter29 > 0) {
+    document.querySelector("#princ29")
+    .innerHTML =  princ29;
+
+} else{
+    document.querySelector("#princ29")
+    .innerHTML=  (0).toFixed(2);
+}
+
+
+// start30
+const open30  = (open29 - princ29).toFixed(2);
+if (open29 > 0) {
+    document.querySelector("#open30")
+    .innerHTML =  open30;
+}else{
+    document.querySelector("#open30")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni30  = moni29;
+if (open30 > 0) {
+    document.querySelector("#moni30")
+    .innerHTML =  moni29;
+}else   {
+    document.querySelector("#moni30")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter30  = (((months - 29) / dip) * amt).toFixed(2);
+if (open30 > 0) {
+    document.querySelector("#inter30")
+    .innerHTML =  inter30;
+}else{
+    document.querySelector("#inter30")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ30  = (moni30 - inter30).toFixed(2);  
+
+if (inter30 > 0) {
+    document.querySelector("#princ30")
+    .innerHTML =  princ30;
+
+} else{
+    document.querySelector("#princ30")
+    .innerHTML=  (0).toFixed(2);
+}
+
+// start31
+const open31  = (open30 - princ30).toFixed(2);
+if (open30 > 0) {
+    document.querySelector("#open31")
+    .innerHTML =  open31;
+}else{
+    document.querySelector("#open31")
+    .innerHTML =  (0).toFixed(2);
+}    
+
+const moni31  = moni30;
+if (open31 > 0) {
+    document.querySelector("#moni31")
+    .innerHTML =  moni30;
+}else   {
+    document.querySelector("#moni31")
+    .innerHTML =  (0).toFixed(2);    
+}    
+
+const inter31  = (((months - 30) / dip) * amt).toFixed(2);
+if (open31 > 0) {
+    document.querySelector("#inter31")
+    .innerHTML =  inter31;
+}else{
+    document.querySelector("#inter31")
+    .innerHTML =  (0).toFixed(2);   
+}
+
+const princ31  = (moni31 - inter31).toFixed(2);  
+
+if (inter31 > 0) {
+    document.querySelector("#princ31")
+    .innerHTML =  princ31;
+
+} else{
+    document.querySelector("#princ31")
+    .innerHTML=  (0).toFixed(2);
+}
+           // console.log  (amount);
+          // console.log (amt);
+          // console.log   (loa);
+          // console.log(dipp);
+          // console.log(dip);
+          // console.log(totaltb);
+          // console.log(totaltb111);
+
+          // console.log(total);
+      }  
+  </script>
